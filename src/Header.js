@@ -13,13 +13,18 @@ function Header({selectRegion}) {
 
 
   return (
-    <div className='header-container'>
-    <h1>COUNTRIES OF THE WORLD!</h1>
-    <button onClick={()=>selectRegion('Asia')}>Asia</button>
-    <button onClick={()=>selectRegion('Africa')}>Africa</button>
-    <button onClick={()=>selectRegion('Europe')}>Europe</button>
-    <button onClick={()=>selectRegion('Americas')}>Americas</button>
-    <button onClick={()=>selectRegion('Oceania')}>Oceania</button>
+    <div>
+        <div className='header-container'>
+            <h1>COUNTRIES OF THE WORLD!</h1>
+            <button className='nav-button' onClick={()=>selectRegion('Asia')}>Asia</button>
+            <button className='nav-button' onClick={()=>selectRegion('Africa')}>Africa</button>
+            <button className='nav-button' onClick={()=>selectRegion('Europe')}>Europe</button>
+            <button className='nav-button' onClick={()=>selectRegion('Americas')}>Americas</button>
+            <button className='nav-button' onClick={()=>selectRegion('Oceania')}>Oceania</button>
+        </div>
+        <div className='input-container'>
+            <input className='input-filter' placeholder='Enter a country name to filter'></input>
+        </div>
     </div>
   )
 }

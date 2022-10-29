@@ -36,8 +36,8 @@ function App() {
         <Route path='/' element={
         <div className='countries-container'>
               {
-                allCountries.map((item) => {
-                return <CountryCard country={item} key={item.name}/>
+                allCountries.map((item, index) => {
+                return <CountryCard country={item} key={index}/>
               })
               }
         </div>

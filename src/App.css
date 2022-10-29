@@ -25,6 +25,7 @@
     padding: 5px;
   }
 
+
 .nav-container {
   font-family: sans-serif;
   font-weight: 600;
@@ -32,6 +33,40 @@
   display: flex;
   justify-content: space-between;
   margin: 20px;
+}
+
+.nav-button {
+  background-color: #48123E;
+  border: 0ch;
+  font-weight: 600;
+  font-size: large;
+  position: relative;
+  outline: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  height: 25px;
+  width: 100px;
+  color: white;
+}
+
+.input-container {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  margin: 10px auto;
+}
+
+.input-filter {
+  display: flex;
+  min-width: 50%;
+  background: #ff00803d;
+  border: 0ch;
+  border-radius: 4px;
+  font-size: 1rem;
+  color: rgb(0, 0, 0);
+  height: 40px;
 }
 
 .countries-container {
