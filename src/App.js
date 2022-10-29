@@ -1,24 +1,52 @@
-import logo from './logo.svg';
 import './App.css';
+import React from 'react';
+import {BrowserRouter, Routes, Route} from 'react-router-dom'; 
+import { useEffect, useState } from 'react';
+import {useParams} from 'react-router-dom'; 
+import Header from './Header';
+import HomePage from './HomePage';
+import CountryDetails from './CountryDetails';
+import axios from 'axios';
+import CountryCard from './CountryCard';
+
 
 function App() {
+
+  const [allCountries, setAllCountries] = useState([]);
+
+  useEffect(() => {
+    axios.get('https://restcountries.com/v2/all?fields=name,capital,region,borders,currencies,population,subregion,flags')
+    .then(response => setAllCountries(response.data))
+    .catch(err=>console.log(err))
+  }, [])
+
+  const selectRegion = (selection) => {
+    axios.get(`https://restcountries.com/v3.1/region/${selection}?fields=name,capital,region,borders,currencies,population,subregion,flags`)
+    .then(response => setAllCountries(response.data))
+    .catch(err => console.log(err))
+    } 
+
+  
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+        <Header selectRegion={selectRegion} allCountries={allCountries}/>
+      <Routes>
+        <Route path='/' element={
+        <div className='countries-container'>
+              {
+                allCountries.map((item) => {
+                return <CountryCard country={item} key={item.name}/>
+              })
+              }
+        </div>
+        }/>
+        <Route path='/CountryCard' element={<CountryCard allCountries={allCountries}/>}/>
+
+
+      </Routes>       
+    </BrowserRouter>
   );
 }
 
