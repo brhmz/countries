@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios';
 
-function Header({selectRegion}) {
+function Header({selectRegion, handleFilter}) {
     
     // const [selectedRegion, setSelectedRegion] = useState()
 
@@ -23,7 +23,7 @@ function Header({selectRegion}) {
             <button className='nav-button' onClick={()=>selectRegion('Oceania')}>Oceania</button>
         </div>
         <div className='input-container'>
-            <input className='input-filter' placeholder='Enter a country name to filter'></input>
+            <input onChange={handleFilter} className='input-filter' placeholder='Enter a country name to filter'></input>
         </div>
     </div>
   )

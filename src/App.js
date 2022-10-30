@@ -26,12 +26,21 @@ function App() {
     .catch(err => console.log(err))
     } 
 
+  const handleFilter=(e)=>{
+    if(e.target.value != ''){
+      const filteredCountries=allCountries.filter(item=>item.name.toLowerCase().includes(e.target.value.toLowerCase()))
+      return setAllCountries(filteredCountries)
+    } else if (e.target.value === '') {
+      return 
+    }
+  }
+
   
 
 
   return (
     <BrowserRouter>
-        <Header selectRegion={selectRegion} allCountries={allCountries}/>
+        <Header selectRegion={selectRegion} allCountries={allCountries} handleFilter={handleFilter}/>
       <Routes>
         <Route path='/' element={
         <div className='countries-container'>

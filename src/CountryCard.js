@@ -1,8 +1,20 @@
 import React from 'react'
 
 function CountryCard({country}) {
-    
 
+    
+// function currencyDetect(country) {
+//     if (country.currencies === undefined && country.currencies[0] != undefined) {
+//         return ''
+//     } else if (country.currencies != undefined && country.currencies[0] != undefined){
+//         return country.currencies[0].name
+//     } else if (country.currencies[0] === undefined) {
+//         return Object.values(country.currencies[0]).name
+//     } else {
+//         return 'hata'
+//     }
+
+// }
 
   return (
     <div className='country-card'>
@@ -12,7 +24,7 @@ function CountryCard({country}) {
             <h3>{country.name.common ? country.name.common : country.name}</h3>
             <p>Region: {country.region}</p>
             <p>Capital: {typeof country.capital === 'string' || country.capital === undefined ? country.capital : country.capital[0]}</p>
-            {/* <p>Currency:{country.name.common ? Object.values(country.currencies)[0].name : country.currencies[0].name}</p> */}
+            <p>Currency:  </p>
             <p>Population: {country.population}</p>
                  
     </div>
