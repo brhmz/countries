@@ -1,13 +1,12 @@
 import './App.css';
 import React from 'react';
 import {BrowserRouter, Routes, Route} from 'react-router-dom'; 
-import { useEffect, useState } from 'react';
-import {useParams} from 'react-router-dom'; 
-import Header from './Header';
-import HomePage from './HomePage';
-import CountryDetails from './CountryDetails';
+import {useEffect, useState} from 'react';
+import Header from './components/Header';
+import CountryDetails from './pages/CountryDetails';
 import axios from 'axios';
-import CountryCard from './CountryCard';
+import CountryCard from './components/CountryCard';
+import { useNavigate } from 'react-router-dom';
 
 
 function App() {
@@ -15,47 +14,74 @@ function App() {
   const [allCountries, setAllCountries] = useState([]);
 
   useEffect(() => {
-    axios.get('https://restcountries.com/v2/all?fields=name,capital,region,borders,currencies,population,subregion,flags')
+    axios.get('https://restcountries.com/v2/all')
     .then(response => setAllCountries(response.data))
     .catch(err=>console.log(err))
   }, [])
 
   const selectRegion = (selection) => {
-    axios.get(`https://restcountries.com/v3.1/region/${selection}?fields=name,capital,region,borders,currencies,population,subregion,flags`)
+    axios.get(`https://restcountries.com/v3.1/region/${selection}`)
     .then(response => setAllCountries(response.data))
     .catch(err => console.log(err))
     } 
 
-  const handleFilter=(e)=>{
-    if(e.target.value != ''){
-      const filteredCountries=allCountries.filter(item=>item.name.toLowerCase().includes(e.target.value.toLowerCase()))
-      return setAllCountries(filteredCountries)
-    } else if (e.target.value === '') {
-      return 
-    }
+  const handleFilter = (e) => {
+    axios.get(`https://restcountries.com/v2/all`)
+    .then(response => setAllCountries(response.data.filter(item => item.name.toLowerCase().includes(e.target.value.toLowerCase()))))
+    .catch(err => console.log(err))
   }
 
+  let navigate = useNavigate()
   
+  let routeUpOnSource = (param) => {
+    if (!param.name.common) {
+        navigate(`/${param.name}`)
+      } else if (param.name.common) {
+        navigate(`/${param.name.common}`)
+      } else {
+        navigate('/404')
+      }
+    }
 
 
   return (
-    <BrowserRouter>
-        <Header selectRegion={selectRegion} allCountries={allCountries} handleFilter={handleFilter}/>
+    <div>
+        <Header 
+          selectRegion={selectRegion} 
+          allCountries={allCountries} 
+          handleFilter={handleFilter}
+        />
       <Routes>
-        <Route path='/' element={
-        <div className='countries-container'>
-              {
-                allCountries.map((item, index) => {
-                return <CountryCard country={item} key={index}/>
-              })
-              }
-        </div>
-        }/>
-        <Route path='/CountryCard' element={<CountryCard allCountries={allCountries}/>}/>
+        <Route 
+            path='/' 
+            element={
+              <div className='countries-container'>
+                    {
+                      allCountries.map((item, index) => {
+                        return <CountryCard 
+                                  country={item} 
+                                  key={index}    
+                                  routeUpOnSource={routeUpOnSource}                
+                                />
+                      })
+                    }
+              </div>
+            }
+        />
+        <Route 
+          path='/CountryDetails/:countryName' 
+          element={
+            <CountryDetails
+              allCountries={allCountries}
+
+            />
+          }              
+        />
+        <Route path='/CountryDetails' element={<CountryDetails/>}/>
 
 
       </Routes>       
-    </BrowserRouter>
+    </div>
   );
 }
 
