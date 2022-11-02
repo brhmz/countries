@@ -9,6 +9,7 @@ import CountryCard from './components/CountryCard';
 import { useNavigate } from 'react-router-dom';
 
 
+
 function App() {
 
   const [allCountries, setAllCountries] = useState([]);
@@ -35,9 +36,9 @@ function App() {
   
   let routeUpOnSource = (param) => {
     if (!param.name.common) {
-        navigate(`/${param.name}`)
+        navigate(`CountryDetails/${param.name}`)
       } else if (param.name.common) {
-        navigate(`/${param.name.common}`)
+        navigate(`CountryDetails/${param.name.common}`)
       } else {
         navigate('/404')
       }
@@ -73,12 +74,10 @@ function App() {
           element={
             <CountryDetails
               allCountries={allCountries}
-
+              routeUpOnSource={routeUpOnSource}
             />
           }              
         />
-        <Route path='/CountryDetails' element={<CountryDetails/>}/>
-
 
       </Routes>       
     </div>

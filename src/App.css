@@ -134,6 +134,56 @@
  
 }
 
+.details-page-container {
+  
+}
+.country-details-info-container {
+  display: flex;
+  flex-direction: column;
+
+
+}
+
+.selected-country-details {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.details-page-flag {
+  max-width: 60%;
+  height: 30vh;
+}
+
+.back-button {
+  margin: 20px 50px;
+  display: inline-block;
+  border: 0ch;
+  padding: .75rem 1.25rem;
+  border-radius: 10rem;
+  color: rgb(255, 255, 255);
+  background-color: #48123E;
+  text-transform: uppercase;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: .15rem;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.bordering-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.bordering-title {
+ text-align: center;
+ padding: 15px 0px;
+
+}
+
 
 @media (max-width: 900px) {
   .title {
