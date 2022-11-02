@@ -2,15 +2,15 @@ import axios from 'axios'
 import React, { useEffect } from 'react'
 import { useParams } from 'react-router'
 import { useNavigate } from "react-router-dom";
+import BorderCountries from '../components/BorderCountries';
 
-function CountryDetails({allCountries, routeUpOnSource}) {
-  let navigate = useNavigate();
+function CountryDetails({allCountries}) {
   
+let navigate = useNavigate();  
 const {countryName} = useParams()
-
 const selectedCountry = allCountries.filter((item) => item.name === countryName)
 
-console.log(selectedCountry)
+console.log(selectedCountry[0].borders)
 
   return (
     <div className='details-page-container'> 
@@ -27,12 +27,8 @@ console.log(selectedCountry)
                   </div>
           </div>
         
-          <div className='borderind-section'>
-            <h2 className='bordering-title'>Bordering Countries</h2>
-            <img/>
-            <p>{Array.isArray(selectedCountry.borders) ? selectedCountry[0].borders[0] : console.log("Yok")}</p>
-      
-            
+          <div>
+            <BorderCountries/>   
           </div>
      
 

@@ -6,7 +6,6 @@ import Header from './components/Header';
 import CountryDetails from './pages/CountryDetails';
 import axios from 'axios';
 import CountryCard from './components/CountryCard';
-import { useNavigate } from 'react-router-dom';
 
 
 
@@ -21,7 +20,7 @@ function App() {
   }, [])
 
   const selectRegion = (selection) => {
-    axios.get(`https://restcountries.com/v3.1/region/${selection}`)
+    axios.get(`https://restcountries.com/v2/region/${selection}`)
     .then(response => setAllCountries(response.data))
     .catch(err => console.log(err))
     } 
@@ -31,18 +30,6 @@ function App() {
     .then(response => setAllCountries(response.data.filter(item => item.name.toLowerCase().includes(e.target.value.toLowerCase()))))
     .catch(err => console.log(err))
   }
-
-  let navigate = useNavigate()
-  
-  let routeUpOnSource = (param) => {
-    if (!param.name.common) {
-        navigate(`CountryDetails/${param.name}`)
-      } else if (param.name.common) {
-        navigate(`CountryDetails/${param.name.common}`)
-      } else {
-        navigate('/404')
-      }
-    }
 
 
   return (
@@ -62,7 +49,7 @@ function App() {
                         return <CountryCard 
                                   country={item} 
                                   key={index}    
-                                  routeUpOnSource={routeUpOnSource}                
+              
                                 />
                       })
                     }
@@ -74,7 +61,7 @@ function App() {
           element={
             <CountryDetails
               allCountries={allCountries}
-              routeUpOnSource={routeUpOnSource}
+
             />
           }              
         />
