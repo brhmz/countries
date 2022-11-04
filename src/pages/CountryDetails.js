@@ -2,7 +2,7 @@ import axios from 'axios'
 import React, { useEffect } from 'react'
 import { useParams } from 'react-router'
 import { useNavigate } from "react-router-dom";
-import BorderCountries from '../components/BorderCountries';
+// import BorderCountries from '../components/BorderCountries';
 
 function CountryDetails({allCountries}) {
   
@@ -28,7 +28,7 @@ console.log(selectedCountry[0].borders)
           </div>
         
           <div>
-            <BorderCountries/>   
+            {/* <BorderCountries/>    */}
           </div>
      
 
