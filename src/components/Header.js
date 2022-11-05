@@ -2,13 +2,13 @@ import React, { useState } from 'react'
 import { useNavigate } from "react-router-dom";
 
 
-function Header({selectRegion, handleFilter}) {
+function Header({selectRegion, handleFilter, backToAll}) {
   let navigate = useNavigate();
  
   return (
     <div>
           <div className='header-container'>
-              <h1 className='title' onClick={() => navigate("/")}>COUNTRIES OF THE WORLD!</h1>
+              <h1 className='title' onClick={()=>{navigate("/"); backToAll()}}>COUNTRIES OF THE WORLD!</h1>
               <button className='nav-button' onClick={()=>selectRegion('asia')}>Asia</button>
               <button className='nav-button' onClick={()=>selectRegion('africa')}>Africa</button>
               <button className='nav-button' onClick={()=>selectRegion('europe')}>Europe</button>

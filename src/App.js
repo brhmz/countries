@@ -19,6 +19,12 @@ function App() {
     .catch(err=>console.log(err))
   }, [])
 
+  const backToAll = () => {
+    axios.get('https://restcountries.com/v2/all')
+    .then(response => setAllCountries(response.data))
+    .catch(err=>console.log(err))
+  }
+
   const selectRegion = (selection) => {
     axios.get(`https://restcountries.com/v2/region/${selection}`)
     .then(response => setAllCountries(response.data))
@@ -38,6 +44,7 @@ function App() {
           selectRegion={selectRegion} 
           allCountries={allCountries} 
           handleFilter={handleFilter}
+          backToAll={backToAll}
         />
       <Routes>
         <Route 
