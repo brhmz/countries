@@ -6,12 +6,14 @@ import Header from './components/Header';
 import CountryDetails from './pages/CountryDetails';
 import axios from 'axios';
 import CountryCard from './components/CountryCard';
+import { useNavigate } from 'react-router-dom';
 
 
 
 function App() {
 
   const [allCountries, setAllCountries] = useState([]);
+  let navigate = useNavigate();
 
   useEffect(() => {
     axios.get('https://restcountries.com/v2/all')
@@ -28,6 +30,7 @@ function App() {
   const selectRegion = (selection) => {
     axios.get(`https://restcountries.com/v2/region/${selection}`)
     .then(response => setAllCountries(response.data))
+    .then(navigate('/'))
     .catch(err => console.log(err))
     } 
 
