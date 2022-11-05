@@ -9,8 +9,6 @@ let navigate = useNavigate();
 const {countryName} = useParams()
 const selectedCountry = allCountries.filter((item) => item.name === countryName)
 
-// console.log(selectedCountry[0].borders)
-
   return (
     <div className='details-page-container'> 
       <div><button className='back-button' onClick={()=>navigate('../')}>Back to Home</button></div>

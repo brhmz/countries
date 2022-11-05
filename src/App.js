@@ -51,31 +51,23 @@ function App() {
         />
       <Routes>
         <Route 
-            path='/' 
-            element={
-              <div className='countries-container'>
-                    {
-                      allCountries.map((item, index) => {
-                        return <CountryCard 
-                                  country={item} 
-                                  key={index}    
-              
-                                />
-                      })
-                    }
+            path='/' element={
+                      <div className='countries-container'>
+                        {
+                          allCountries.map((item, index) => {
+                            return <CountryCard 
+                                      country={item} 
+                                      key={index}              
+                                    />
+                          })
+                        }
               </div>
             }
         />
         <Route 
           path='/CountryDetails/:countryName' 
-          element={
-            <CountryDetails
-              allCountries={allCountries}
-
-            />
-          }              
+          element={<CountryDetails allCountries={allCountries}/>}              
         />
-
       </Routes>       
     </div>
   );
