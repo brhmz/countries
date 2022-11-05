@@ -15,7 +15,7 @@ function CountryCard({country}) {
               <h3>{country.name}</h3>
               <p>Region: {country.region}</p>
               <p>Capital: {typeof country.capital === 'string' || country.capital === undefined ? country.capital : country.capital[0]}</p>
-              <p>Currency:  </p>
+              <p>Currency: {country.currencies ? country.currencies[0].name : ''} </p>
               <p>Population: {country.population}</p>              
 
     </div>

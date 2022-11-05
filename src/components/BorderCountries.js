@@ -2,14 +2,21 @@ import React from 'react';
 import { useParams } from 'react';
 
 
-function BorderCountries({allCountries}) {
+function BorderCountries({selectedCountry, allCountries}) {
 
-    const {countryName} = useParams()
-    let selectedCountry = allCountries.filter((item) => item.name === countryName)
+const borderCountriesCodes = selectedCountry.map(item => item.borders);
+const allCodes = allCountries.map(item => item.alpha3Code)
 
+const borderCountries = allCountries.map(item => item.alpha3Code === borderCountriesCodes)
+
+
+  
+console.log(borderCountries)
+console.log(allCodes)
+console.log(borderCountriesCodes[0])
   return (
     <div>
-        <img src={selectedCountry[0].flag.svg}/>
+        {/* <img src={selectedCountry[0].flag}/> */}
         <p></p>
     </div>
   )
