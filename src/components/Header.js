@@ -15,9 +15,7 @@ function Header({ selectRegion, handleFilter, backToAll }) {
         <button className='nav-button' onClick={() => selectRegion('americas')}>Americas</button>
         <button className='nav-button' onClick={() => selectRegion('oceania')}>Oceania</button>
       </div>
-      <div className='input-container'>
-        <input onChange={handleFilter} className='input-filter' placeholder='Enter a country name to filter'></input>
-      </div>
+      
     </div>
   )
 }
