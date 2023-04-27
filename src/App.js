@@ -11,7 +11,7 @@ import HomePage from './pages/HomePage';
 
 
 
-function App() {
+function App() {        
 
   const [allCountries, setAllCountries] = useState([]);
   let navigate = useNavigate();

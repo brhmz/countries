@@ -1,5 +1,4 @@
 import React from 'react';
-import { useParams } from 'react';
 import BorderCountriesCard from './BorderCountriesCard';
 
 
