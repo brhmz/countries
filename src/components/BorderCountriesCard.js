@@ -1,16 +1,17 @@
 import React from 'react'
+import { useNavigate } from 'react-router'
 
 function BorderCountriesCard({borderCountry}) {
 
-    console.log({borderCountry})
+    let navigate = useNavigate()
 
     return (
-        <div className='borders-card-container'>
+        <div className='borders-card-container' onClick={() => navigate(`/countrydetails/${borderCountry?.name}`)}>
             <div>
                 <div className='borders-flag-container' >
-                    <img src={borderCountry.flags.png} alt='Border Countries'/>
+                    <img src={borderCountry?.flags?.png} alt='Border Countries'/>
                 </div>
-                <p>{borderCountry.name}</p>
+                <p>{borderCountry?.name}</p>
             </div>
         </div>
     )

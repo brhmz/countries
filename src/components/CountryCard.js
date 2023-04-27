@@ -7,17 +7,16 @@ function CountryCard({ country }) {
   let navigate = useNavigate()
 
   return (
-    <div className='country-card' onClick={() => navigate(`/countrydetails/${country.name}`)}>
+    <div className='country-card' onClick={() => navigate(`/countrydetails/${country?.name}`)}>
 
       <div className='flag-container'>
-        <img className='country-flag' src={country.flags.png} />
+        <img className='country-flag' src={country?.flags.png} alt={country?.name} />
       </div>
-      <h3>{country.name}</h3>
-      <p>Region: {country.region}</p>
-      <p>Capital: {typeof country.capital === 'string' || country.capital === undefined ? country.capital : country.capital[0]}</p>
-      <p>Currency: {country.currencies ? country.currencies[0].name : ''} </p>
-      <p>Population: {country.population}</p>
-
+      <h3>{country?.name}</h3>
+      <p>Region: {country?.region}</p>
+      <p>Capital: {typeof country?.capital === 'string' || country.capital === undefined ? country.capital : country.capital[0]}</p>
+      <p>Currency: {country?.currencies ? country?.currencies[0]?.name : ''} </p>
+      <p>Population: {country?.population}</p>
     </div>
   )
 }
