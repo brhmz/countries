@@ -3,8 +3,8 @@ import BorderCountriesCard from './BorderCountriesCard';
 
 function BorderCountries({ selectedCountry, allCountries }) {
 
-  const borderCountriesCodes = selectedCountry?.map(item => item.borders ? item.borders : '');
-  const borderCountries = allCountries?.filter(item => borderCountriesCodes[0].indexOf(item.alpha3Code) !== -1)
+  const borderCountriesCodes = selectedCountry?.map(item => item?.borders ? item?.borders : '');
+  const borderCountries = allCountries?.filter(item => borderCountriesCodes[0]?.indexOf(item?.alpha3Code) !== -1)
 
   return (
     <div>
